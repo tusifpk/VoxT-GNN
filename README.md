@@ -90,19 +90,19 @@ bev  AP: 84.30 71.53 64.90
 - Train with a single GPU
 
 ```shell
-python train.py --cfg_file tools/cfgs/kitti_models/voxtnt.yaml
+python train.py --cfg_file tools/cfgs/kitti_models/voxt_gnn.yaml
 ```
 
 - Train with multiple GPUs 
 
 ```shell
 cd VoxSeT/tools
-bash scripts/dist_train.sh --cfg_file ./cfgs/kitti_models/voxtnt.yaml
+bash scripts/dist_train.sh --cfg_file ./cfgs/kitti_models/voxt_gnn.yaml
 ```
 ### 6. Test with a pretrained model
 
 ```shell
 cd VoxSeT/tools
-python test.py --cfg_file --cfg_file ./cfgs/kitti_models/voxtnt.yaml --ckpt ${CKPT_FILE}
+python test.py --cfg_file --cfg_file ./cfgs/kitti_models/voxt_gnn.yaml --ckpt ${CKPT_FILE}
 ```
 
