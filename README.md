@@ -65,7 +65,7 @@ bev  AP:91.9542, 72.5878, 69.9172
 The runtime is about **18 ms** per sample. (RTX 4090 GPU)
 
 
-Performance comparison with state-of-the-art methods on the KITTI test set. The results are reported by the mAP with 40 recall points.(two-stage)
+Performance comparison with state-of-the-art methods on the KITTI test set. The results are reported by the mAP with 40 recall points(two-stage).
 In two-stage models are not suitable to directly report results on KITTI test set, please use slightly lower score threshold and train the models on all or 90% training data to achieve a desirable performance on KITTI test set.
 ```
 Car  AP@0.70, 0.70, 0.70:
