@@ -107,7 +107,6 @@ python test.py --cfg_file --cfg_file ./cfgs/kitti_models/voxt_gnn.yaml --ckpt ${
 ```
 ### 7. Acknowledgement
 
-```shell
 Some codes are from VoxSeT(https://github.com/skyhehe123/VoxSeT).
-```
+
 
