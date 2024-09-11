@@ -2,7 +2,7 @@
 
 **Authors**: [Qiangwen Wen](https://github.com/yujianxinnian), [Sheng Wu*](http://adcfj.cn/sirc/door/team/TeacherList/Detail?personId=%20422), Jinghui Wei.
 
-This project is built on [OpenPCDet](https://github.com/open-mmlab/OpenPCDet). some codes are from VoxSeT(https://github.com/skyhehe123/VoxSeT).
+This project is built on [OpenPCDet](https://github.com/open-mmlab/OpenPCDet). 
 
 ## Introduction
 <img src="diagram.png" alt="drawing" width="900" height="400"/>
@@ -104,5 +104,10 @@ bash scripts/dist_train.sh --cfg_file ./cfgs/kitti_models/voxt_gnn.yaml
 ```shell
 cd VoxT-GNN/tools
 python test.py --cfg_file --cfg_file ./cfgs/kitti_models/voxt_gnn.yaml --ckpt ${CKPT_FILE}
+```
+### 7. Acknowledgement
+
+```shell
+Some codes are from VoxSeT(https://github.com/skyhehe123/VoxSeT).
 ```
 
