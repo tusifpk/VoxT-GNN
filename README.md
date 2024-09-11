@@ -2,6 +2,8 @@
 
 **Authors**: [Qiangwen Wen](https://github.com/yujianxinnian), [Sheng Wu*](http://adcfj.cn/sirc/door/team/TeacherList/Detail?personId=%20422), Jinghui Wei.
 
+**Institution**: Introduction of The Academy of Digital China (Fujian), Fuzhou University, China
+
 This project is built on [OpenPCDet](https://github.com/open-mmlab/OpenPCDet). 
 
 ## Introduction
