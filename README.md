@@ -46,7 +46,9 @@ python -m pcdet.datasets.kitti.kitti_dataset create_kitti_infos tools/cfgs/datas
 ```
 
 ### 4. Pretrain model
-You can use the pretrain model (/PretrainedModel).
+You can use the pretrain model.
+链接：https://pan.baidu.com/s/1n6iR-Wmd-ufGUCb9bJa6Hw 
+提取码：r3cm 
 
 The performance (using 11 recall poisitions) on KITTI validation set is as follows(single-stage):
 ```
