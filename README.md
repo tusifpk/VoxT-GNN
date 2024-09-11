@@ -1,4 +1,4 @@
-## VoxT-GNN：A 3D Object Detection Approach from Point Cloud based on Voxel-Level Transformer and Graph Neural Network ()
+## VoxT-GNN：A 3D Object Detection Approach from Point Cloud based on Voxel-Level Transformer and Graph Neural Network
 
 **Authors**: [Qiangwen Wen](https://github.com/yujianxinnian), [Sheng Wu*](http://adcfj.cn/sirc/door/team/TeacherList/Detail?personId=%20422), Jinghui Wei.
 
@@ -64,10 +64,10 @@ bev  AP:91.9542, 72.5878, 69.9172
 ```
 The runtime is about **18 ms** per sample. (RTX 4090 GPU)
 
-'''
-	 Performance comparison with state-of-the-art methods on the KITTI test set. The results are reported by the mAP with 40 recall points.(two-stage)
-	 In two-stage models are not suitable to directly report results on KITTI test set, please use slightly lower score threshold and train the models on all or 90% training data to achieve a desirable performance on KITTI test set.
-'''
+
+Performance comparison with state-of-the-art methods on the KITTI test set. The results are reported by the mAP with 40 recall points.(two-stage)
+In two-stage models are not suitable to directly report results on KITTI test set, please use slightly lower score threshold and train the models on all or 90% training data to achieve a desirable performance on KITTI test set.
+```
 Car  AP@0.70, 0.70, 0.70:
 bev  AP: 94.52 88.63 86.04
 3D   AP: 90.26 81.53 77.07	
@@ -79,7 +79,7 @@ bev  AP: 54.30 48.12 45.84
 Cyclist AP@0.50, 0.50, 0.50:
 bev  AP: 84.30 71.53 64.90
 3D   AP: 82.84 67.88 60.42
-
+```
 ### 5. Train
 
 - Train with a single GPU
