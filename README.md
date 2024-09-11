@@ -96,13 +96,13 @@ python train.py --cfg_file tools/cfgs/kitti_models/voxt_gnn.yaml
 - Train with multiple GPUs 
 
 ```shell
-cd VoxSeT/tools
+cd VoxT-GNN/tools
 bash scripts/dist_train.sh --cfg_file ./cfgs/kitti_models/voxt_gnn.yaml
 ```
 ### 6. Test with a pretrained model
 
 ```shell
-cd VoxSeT/tools
+cd VoxT-GNN/tools
 python test.py --cfg_file --cfg_file ./cfgs/kitti_models/voxt_gnn.yaml --ckpt ${CKPT_FILE}
 ```
 
