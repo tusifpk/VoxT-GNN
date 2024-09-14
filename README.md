@@ -54,6 +54,7 @@ You can use the pretrain model.
 Link: https://pan.baidu.com/s/1n6iR-Wmd-ufGUCb9bJa6Hw  
 Extraction code: r3cm
 
+It should be noted that in voxel-based methods, point clouds are randomly sampled, which leads to some variation in the prediction results for each attempt; this variability is normal, but the deviation should not be significant.
 
 The performance (using 11 recall poisitions) on KITTI validation set is as follows(single-stage):
 ```
@@ -66,8 +67,8 @@ bev  AP:69.03, 63.65, 58.51
 3d   AP:67.23, 60.63, 55.40
 
 Cyclist AP@0.50, 0.50, 0.50:
-bev  AP:91.9542, 72.5878, 69.9172
-3d   AP:90.8777, 69.9775, 65.7119
+bev  AP:91.95, 72.59, 69.92
+3d   AP:90.75, 70.13, 65.70
 ```
 The runtime is about **18 ms** per sample. (RTX 4090 GPU)
 
