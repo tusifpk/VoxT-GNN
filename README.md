@@ -54,7 +54,8 @@ You can use the pretrain model.
 Link: https://pan.baidu.com/s/1n6iR-Wmd-ufGUCb9bJa6Hw  
 Extraction code: r3cm
 
-It should be noted that in voxel-based methods, point clouds are randomly sampled, which leads to some variation in the prediction results for each attempt; this variability is normal, but the deviation should not be significant.
+It should be noted that in voxel-based methods, the point clouds are randomly sampled, which results in some deviation in the prediction outcomes for each instance. However, the deviation is not expected to be too large. This is a normal phenomenon.
+
 
 The performance (using 11 recall poisitions) on KITTI validation set is as follows(single-stage):
 ```
