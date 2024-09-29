@@ -8,7 +8,7 @@ This project is built on [OpenPCDet](https://github.com/open-mmlab/OpenPCDet).
 
 ## Introduction
 <img src="diagram.png" alt="drawing" width="900" height="400"/>
-Due to the irregularity, disorder, sparsity, and highly variable point density of LiDAR point clouds, feature learning for 3D object detection is highly challenging. In this paper, we design a novel voxel-based architecture for 3D object detection in LiDAR point clouds, namely VoxT-GNN, which deeply integrates Transformer and Graph Neural Network architectures to learn more discriminative features of the point cloud through set-to-set transformations while ensuring the speed of inference. 
+In this paper, we present VoxT-GNN, an innovative framework that harnesses the strengths of both Transformer and Graph Neural Network architectures for 3D object detection from LiDAR point clouds. Within VoxT-GNN, we introduce the Voxel-Level Transformer (VoxelFormer) and GNN Feed-Forward Network (GnnFFN) components. We employ VoxelFormer to capture the local features of each point within a voxel. Furthermore, we integrate GnnFFN into both the encoder and decoder of VoxelFormer to facilitate cross-region (cross-voxel) information exchange, thereby enabling the extraction of global features. Comprehensive experimental results on the KITTI dataset indicate that our VoxT-GNN achieves competitive performance with notable advantages over state-of-the-art benchmark networks, particularly in detecting Cyclist and Pedestrian. 
 
 ### 1. Recommended Environment
 - OpenPCDet Version: 0.5.2
