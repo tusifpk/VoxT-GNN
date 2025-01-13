@@ -10,14 +10,17 @@ This project is built on [OpenPCDet](https://github.com/open-mmlab/OpenPCDet).
 <img src="diagram.png" alt="drawing" width="900" height="400"/>
 In this paper, we present VoxT-GNN, an innovative framework that harnesses the strengths of both Transformer and Graph Neural Network architectures for 3D object detection from LiDAR point clouds. Within VoxT-GNN, we introduce the Voxel-Level Transformer (VoxelFormer) and GNN Feed-Forward Network (GnnFFN) components. We employ VoxelFormer to capture the local features of each point within a voxel. Furthermore, we integrate GnnFFN into both the encoder and decoder of VoxelFormer to facilitate cross-region (cross-voxel) information exchange, thereby enabling the extraction of global features. Comprehensive experimental results on the KITTI dataset indicate that our VoxT-GNN achieves competitive performance with notable advantages over state-of-the-art benchmark networks, particularly in detecting Cyclist and Pedestrian. 
 
-### 1. Recommended Environment
+### 1. Experimental Environment
+- CPU	Intel(R) Xeon(R) Silver 4214 CPU @ 2.20GHz
+- GPU	RTX 4090
 - OpenPCDet Version: 0.5.2
 - Linux (tested on Ubuntu 22.04)
-- Python 3.7
-- PyTorch 1.9 or higher (tested on PyTorch 1.13.0)
-- CUDA 9.0 or higher (tested on CUDA 11.7)
+- Python 3.7.16
+- Pytorch 1.13.0
+- CUDA 11.7
+- cuDNN	8.5.0
 
-voxt_gnn_pv_rcnn_plus.yaml need Version: 0.6.0
+- voxt_gnn_pv_rcnn_plus.yaml need OpenPCDet Version: 0.6.0
 
 ### 2. Set the Environment
 
@@ -71,8 +74,6 @@ Cyclist AP@0.50, 0.50, 0.50:
 bev  AP:91.95, 72.59, 69.92
 3d   AP:90.75, 70.13, 65.70
 ```
-The runtime is about **18 ms** per sample. (RTX 4090 GPU)
-
 
 The performance (using 40 recall poisitions) on the KITTI test set (two-stage).
 In two-stage models are not suitable to directly report results on KITTI test set, please use slightly lower score threshold and train the models on all or 90% training data to achieve a desirable performance on KITTI test set.
@@ -89,6 +90,8 @@ Cyclist AP@0.50, 0.50, 0.50:
 bev  AP: 84.30 71.53 64.90
 3D   AP: 82.84 67.88 60.42
 ```
+The above results are obtained from the optimal combination of voxel size, hidden code L, and k-NN k-value. In addition, due to the voxel based method, each sampling point is random, so the results may vary during each training or testing.
+
 ### 5. Train
 
 - Train with a single GPU

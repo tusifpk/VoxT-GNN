@@ -6,8 +6,7 @@ from .vfe_template import VFETemplate
 import torch_scatter
 
 import math
-# import spconv
-import spconv.pytorch as spconv
+
 from torch_geometric.nn import PointGNNConv
 
 from torch_cluster import knn_graph
@@ -213,19 +212,6 @@ class MLP_VSA_Layer(nn.Module):
         self.gnn_ffn = GNN_FFN(auto_offset_MLP_depth_list=[conv_dim, 64, 3],
                   edge_MLP_depth_list=[conv_dim+3, conv_dim, conv_dim], update_MLP_depth_list=[conv_dim, conv_dim, conv_dim], 
                   graph_net_layers=gnn_layers) 
-        # conv ffn
-        # self.conv_ffn = nn.Sequential(           
-        #     nn.Conv2d(conv_dim, conv_dim, 3, 1, 1, groups=conv_dim, bias=False), 
-        #     nn.BatchNorm2d(conv_dim),
-        #     nn.ReLU(),
-        #     nn.Conv2d(conv_dim, conv_dim, 3, 1, 1, groups=conv_dim, bias=False), 
-        #     nn.BatchNorm2d(conv_dim),
-        #     nn.ReLU(),
-        #     # nn.Conv2d(conv_dim, conv_dim, 3, 1, dilation=2, padding=2, groups=conv_dim, bias=False),
-        #     # nn.BatchNorm2d(conv_dim),
-        #     # nn.ReLU(), 
-        #     nn.Conv2d(conv_dim, conv_dim, 1, 1, bias=False), 
-        #  ) 
         
         # decoder
         self.norm = nn.BatchNorm1d(dim,eps=1e-3, momentum=0.01)
@@ -244,27 +230,16 @@ class MLP_VSA_Layer(nn.Module):
         x = self.pre_mlp(inp) #(n,self.dim),eg.(83682,16)
 
         # encoder
-        # self.score(x):(n,self.k) ,eg.(83682,8); 
         attn = torch_scatter.scatter_softmax(self.score(x), inverse, dim=0) # (n,self.k) eg.(83682,8)，计算隐藏码
-        # attn[:, :, None]: (n,self.k,1),eg.(83682,8,1); x.view(-1, 1, self.dim): (n,1,self.dim),eg.(83682,1,16)
-        # (attn[:, :, None] * x.view(-1, 1, self.dim)): [n, self.k, self.dim] eg.[80957, 8, 16]
         dot = (attn[:, :, None] * x.view(-1, 1, self.dim)).view(-1, self.dim*self.k) #(n,self.dim*self.k),eg.(n,128) x与注意力值乘积
         x_ = torch_scatter.scatter_sum(dot, inverse, dim=0)#(n',self.dim*self.k), eg.(13842, 128) n'体素个数，每个体素中点特征之和，也即体素局部特征呢个
-
         edge_index = knn_graph(coords[:,1:].contiguous(), k=self.k_gnn, batch=coords[:,0].contiguous(), loop=False)
         
-        # 体素间信息交换 
+        # GnnFFN
         
         h = self.gnn_ffn(F.relu(x_),coords[:,1:],edge_index)
         h = h[inverse, :] # (n,conv_dim),eg.[83682, 128]
 
-        # conv ffn
-        # batch_size = int(coords[:, 0].max() + 1)
-        # h = spconv.SparseConvTensor(F.relu(x_), coords.int(), bev_shape, batch_size).dense().squeeze(-1)
-        # h = self.conv_ffn(h).permute(0,2,3,1).contiguous().view(-1, self.conv_dim)
-        # flatten_indices = coords[:, 0] * bev_shape[0] * bev_shape[1] + coords[:, 1] * bev_shape[1] + coords[:, 2]
-        # h = h[flatten_indices.long(), :] 
-        # h = h[inverse, :]
        
         # decoder
         hs = self.norm(h.view(-1,  self.dim)).view(-1, self.k, self.dim)

@@ -197,7 +197,7 @@ MODEL:
                 NMS_TYPE: nms_gpu
                 MULTI_CLASSES_NMS: False
                 NMS_PRE_MAXSIZE: 1024
-                NMS_POST_MAXSIZE: 100 #128    论文中是128
+                NMS_POST_MAXSIZE: 100 
                 NMS_THRESH: 0.7
 
         ROI_GRID_POOL:
@@ -243,7 +243,7 @@ MODEL:
         NMS_CONFIG:
             MULTI_CLASSES_NMS: False
             NMS_TYPE: nms_gpu
-            NMS_THRESH: 0.1 #论文中是0.01，PCDet默认是0.1
+            NMS_THRESH: 0.1 
             NMS_PRE_MAXSIZE: 4096
             NMS_POST_MAXSIZE: 500
 
