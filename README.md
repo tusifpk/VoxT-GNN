@@ -97,15 +97,13 @@ The above results are obtained from the optimal combination of voxel size, hidde
 - Train with a single GPU
 
 ```shell
-python train.py --cfg_file tools/cfgs/kitti_models/voxt_gnn.yaml
-```
 
-- Train with multiple GPUs 
-
-```shell
 cd VoxT-GNN/tools
-bash scripts/dist_train.sh --cfg_file ./cfgs/kitti_models/voxt_gnn.yaml
+python train.py --cfg_file cfgs/kitti_models/voxt_gnn.yaml
+
+
 ```
+
 ### 6. Test with a pretrained model
 
 ```shell
