@@ -8,3 +8,14 @@ pyyaml
 scikit-image
 tqdm
 torchvision
+torch_geometric
+torch_scatter
+torch_sparse
+torch_cluster,
+torch_spline_conv
+av2
+matplotlib
+haredArray
+opencv-python
+kornia<=0.6.12
+spconv-cu117
