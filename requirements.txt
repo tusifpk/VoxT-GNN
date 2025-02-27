@@ -11,11 +11,11 @@ torchvision
 torch_geometric
 torch_scatter
 torch_sparse
-torch_cluster,
+torch_cluster
 torch_spline_conv
 av2
 matplotlib
 haredArray
 opencv-python
-kornia<=0.6.12
+kornia<=0.6.8
 spconv-cu117
