@@ -7,8 +7,8 @@
 This project is built on [OpenPCDet](https://github.com/open-mmlab/OpenPCDet). 
 
 ## Introduction
-<img src="diagram.png" alt="drawing" width="900" height="400"/>
-In this paper, we present VoxT-GNN, an innovative framework that harnesses the strengths of both Transformer and Graph Neural Network architectures for 3D object detection from LiDAR point clouds. Within VoxT-GNN, we introduce the Voxel-Level Transformer (VoxelFormer) and GNN Feed-Forward Network (GnnFFN) components. We employ VoxelFormer to capture the local features of each point within a voxel. Furthermore, we integrate GnnFFN into both the encoder and decoder of VoxelFormer to facilitate cross-region (cross-voxel) information exchange, thereby enabling the extraction of global features. Comprehensive experimental results on the KITTI dataset indicate that our VoxT-GNN achieves competitive performance with notable advantages over state-of-the-art benchmark networks, particularly in detecting Cyclist and Pedestrian. 
+<img src="diagram.jpg" alt="drawing" width="900" height="400"/>
+In this paper, we present VoxT-GNN, an innovative framework that harnesses the strengths of both Transformer and Graph Neural Network architectures for 3D object detection from LiDAR point clouds. Within VoxT-GNN, we introduce the Voxel-Level Transformer (VoxelFormer) and GNN Feed-Forward Network (GnnFFN) components. We employ VoxelFormer to capture the local features of each point within a voxel. Furthermore, we integrate GnnFFN into both the encoder and decoder of VoxelFormer to facilitate cross-region (cross-voxel) information exchange, thereby enabling the extraction of global features. Extensive experiments on KITTI and Waymo Open Dataset (WOD) demonstrate the strong competitiveness of our method, particularly showing significant improvements in small object detection.
 
 ### 1. Experimental Environment
 - CPU	Intel(R) Xeon(R) Silver 4214 CPU @ 2.20GHz
@@ -60,37 +60,31 @@ Extraction code: r3cm
 PLEASE NOTE: For the voxel-based methods, the point clouds are randomly sampled, which results in some deviation in the prediction outcomes for each instance. However, the deviation is not expected to be too large. This is a normal phenomenon.
 
 
-The performance (using 11 recall poisitions) on KITTI validation set is as follows(single-stage):
+The performance (using 11 recall poisitions) on KITTI validation set is as follows(single-stage,v=0.18,k=5):
 ```
 Car  AP@0.70, 0.70, 0.70:
-bev  AP:90.16, 88.10, 86.84
-3d   AP:88.88, 78.54, 77.60
+3d   AP:88.32, 77.73, 76.74
 
 Pedestrian AP@0.50, 0.50, 0.50:
-bev  AP:69.03, 63.65, 58.51
 3d   AP:67.23, 60.63, 55.40
 
 Cyclist AP@0.50, 0.50, 0.50:
-bev  AP:91.95, 72.59, 69.92
 3d   AP:90.75, 70.13, 65.70
 ```
 
 The performance (using 40 recall poisitions) on the KITTI test set (two-stage).
-In two-stage models are not suitable to directly report results on KITTI test set, please use slightly lower score threshold and train the models on all or 90% training data to achieve a desirable performance on KITTI test set.
+In two-stage models are not suitable to directly report results on KITTI test set, please use slightly lower score threshold and train the models on all or 90% training data to achieve a desirable performance on KITTI test set.(VoxT-GNN combined with Voxel R-CNN，K=5)
 ```
 Car  AP@0.70, 0.70, 0.70:
-bev  AP: 94.52 88.63 86.04
-3D   AP: 90.26 81.53 77.07	
+3D   AP: 90.14 81.35 76.70	
 	
 Pedestrian AP@0.50, 0.50, 0.50:
-bev  AP: 54.30 48.12 45.84
-3D   AP: 51.30 44.80 41.70
+3D   AP: 47.56 40.51 38.29
 
 Cyclist AP@0.50, 0.50, 0.50:
-bev  AP: 84.30 71.53 64.90
-3D   AP: 82.84 67.88 60.42
+3D   AP: 83.93 68.50 62.02
 ```
-The above results are obtained from the optimal combination of voxel size, hidden code L, and k-NN k-value. In addition, due to the voxel based method, each sampling point is random, so the results may vary during each training or testing.
+Due to the voxel based method, each sampling point is random, so the results may vary during each training or testing.
 
 ### 5. Train
 
@@ -110,8 +104,5 @@ python train.py --cfg_file cfgs/kitti_models/voxt_gnn.yaml
 cd VoxT-GNN/tools
 python test.py --cfg_file --cfg_file ./cfgs/kitti_models/voxt_gnn.yaml --ckpt ${CKPT_FILE}
 ```
-### 7. Acknowledgement
-
-Some codes are from VoxSeT(https://github.com/skyhehe123/VoxSeT).
 
 
