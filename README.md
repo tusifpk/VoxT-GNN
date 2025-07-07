@@ -15,7 +15,7 @@ In this paper, we present VoxT-GNN, an innovative framework that harnesses the s
 - GPU	RTX 4090
 - OpenPCDet Version: 0.5.2
 - Linux (tested on Ubuntu 22.04)
-- - Python 3.8+ (due to `av2` package dependency)
+- Python 3.8+ (due to `av2` package dependency)
 - Pytorch 1.13.0
 - CUDA 11.7
 - cuDNN	8.5.0
